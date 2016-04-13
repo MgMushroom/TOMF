@@ -1,6 +1,7 @@
 package com.ms.tomf.Objects
 {
 	import com.ms.tomf.Objects.Player;
+	import com.ms.tomf.Objects.ABS.Projectiles.ABS;
 	import com.ms.tomf.Objects.MapObjects.Background;
 	import com.ms.tomf.Objects.MapObjects.Ground;
 	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;
@@ -42,6 +43,7 @@ package com.ms.tomf.Objects
 		
 		private function defineMapContent():void
 		{
+			
 			mapContent.ground = new Ground;
 			mapContent.background = new Background;
 			mapContent.traps = new Traps;
@@ -52,6 +54,7 @@ package com.ms.tomf.Objects
 		private function addMapContent():void
 		{
 			this.addChild(mapContent.background);
+		
 			this.addChild(mapContent.ground);
 			this.addChild(mapContent.movement);
 			this.addChild(mapContent.traps);

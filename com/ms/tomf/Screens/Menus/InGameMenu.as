@@ -33,7 +33,7 @@ package com.ms.tomf.Screens.Menus
 		}
 		private function checkKey(e:Event):void
 		{
-			if(Controls.keyboard.esc)
+			if(Controls.keyboard.shift)
 			{
 				this.visible = true;
 			}else{

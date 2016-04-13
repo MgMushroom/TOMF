@@ -38,8 +38,6 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			
 			//if (InGame.inGameContent.player.x -InGame.inGameContent.map.x >= (this.x - 600) )	
 
-			trace((InGame.inGameContent.player.x - InGame.inGameContent.map.x)/*- (this.x - 600)*/+ "\n" +
-				(this.x));
 	
 			if(this.hitTestObject(InGame.inGameContent.player))
 			{Player.attributes.health -= 0;} 

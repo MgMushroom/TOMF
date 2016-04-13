@@ -19,6 +19,7 @@ package com.ms.tomf.Objects
 		//Player attributes
 		public static var attributes:Object = new Object;
 		public static var state:Object = new Object;
+		private var frameControl:Object = new Object;
 		//Player point vars
 		public static var bumpPoints:Object = new Object;
 		//Player points
@@ -33,6 +34,8 @@ package com.ms.tomf.Objects
 		public function Player()
 		{
 			trace("PLAYER ACTIVE");
+			state.running = true;
+			frameControl.frame = 0;
 			
 			this.x = 600 - this.width *0.5;
 			this.y = 400 - this.height*0.5;
@@ -80,11 +83,6 @@ package com.ms.tomf.Objects
 		private function checkAnimation(e:Event):void
 		{	
 
-			if(Controls.keyboard.a == false && Controls.keyboard.d == false && this.x < Controls.mouse.x)
-
-			playerY = this.y;
-			playerX = this.x;
-			
 			if(Controls.keyboard.a == false && Controls.keyboard.d == false)
 
 			{
@@ -105,17 +103,19 @@ package com.ms.tomf.Objects
 				gotoAndPlay("jumpingL");
 			}
 		
-			if(Controls.keyboard.a == true && this.x < Controls.mouse.x||
-				Controls.keyboard.d == true && this.x < Controls.mouse.x)
+			if(Controls.keyboard.a == true && this.x < Controls.mouse.x && state.running||
+				Controls.keyboard.d == true && this.x < Controls.mouse.x && state.running)
 			{
 				gotoAndPlay("runningR");
+				
 			}
 			
-			if(Controls.keyboard.a == true && this.x > Controls.mouse.x||
-				Controls.keyboard.d == true && this.x > Controls.mouse.x)
+			if(Controls.keyboard.a == true && this.x > Controls.mouse.x && state.running||
+				Controls.keyboard.d == true && this.x > Controls.mouse.x && state.running)
 			{
 				gotoAndPlay("runningL");
 			}
+		
 		}
 	}
 }
