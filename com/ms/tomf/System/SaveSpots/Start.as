@@ -1,6 +1,8 @@
 package com.ms.tomf.System.SaveSpots
 {
+	import com.ms.tomf.Objects.Map;
 	import com.ms.tomf.Objects.Player;
+	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
 	
@@ -21,6 +23,8 @@ package com.ms.tomf.System.SaveSpots
 		
 			Physics.movement.scrollY = 0;
 			Physics.movement.scrollX = 0;
+			Map.mapContent.worm.x = 1500;
+			Map.mapContent.worm.y = 800;
 		}
 	}
 }
