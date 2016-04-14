@@ -29,6 +29,7 @@
 		{
 			weapons.projectile = new Object;
 			helpers.absRotate = new ABSrotate;
+				helpers.absRotate.visible = false;
 		}
 		
 		private function addWeaponsContent():void
@@ -54,6 +55,7 @@
 			{
 				weapons.projectile.lauch = true;
 				weapons.projectile.power++;
+				helpers.absRotate.visible = true;
 				
 				if(weapons.projectile.power > 50)
 				{weapons.projectile.power = 50;}
@@ -61,9 +63,10 @@
 			
 			if(Controls.keyboard.space == false && weapons.projectile.lauch == true)
 			{
-				weapons.spear = new RangeSpear(Player.state.dir, weapons.projectile.power);
+				weapons.spear = new RangeSpear(Player.state.dir, weapons.projectile.power, ABSrotate.rotationABS);
 				this.addChild(weapons.spear);
 				
+				helpers.absRotate.visible = false;
 				weapons.projectile.power = 0;
 				weapons.projectile.lauch = false;
 			}

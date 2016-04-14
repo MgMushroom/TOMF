@@ -9,6 +9,7 @@ package com.ms.tomf.Objects
 	import com.ms.tomf.Objects.MapObjects.Traps.Traps;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
+	import com.ms.tomf.Objects.MapObjects.Allys.TestTree;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -46,6 +47,7 @@ package com.ms.tomf.Objects
 			
 			mapContent.ground = new Ground;
 			mapContent.background = new Background;
+			mapContent.testTree = new TestTree;
 			mapContent.traps = new Traps;
 			mapContent.movement = new Movement;
 			mapContent.worm = new Worm;
@@ -54,10 +56,10 @@ package com.ms.tomf.Objects
 		private function addMapContent():void
 		{
 			this.addChild(mapContent.background);
-		
 			this.addChild(mapContent.ground);
 			this.addChild(mapContent.movement);
 			this.addChild(mapContent.traps);
+			this.addChild(mapContent.testTree);
 			this.addChild(mapContent.worm);
 
 		}

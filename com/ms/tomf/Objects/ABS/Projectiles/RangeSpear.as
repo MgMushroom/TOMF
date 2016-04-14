@@ -1,32 +1,45 @@
 ﻿package com.ms.tomf.Objects.ABS.Projectiles
 {
+	import com.ms.tomf.Objects.Map;
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Objects.MapObjects.Ground;
 	import com.ms.tomf.Screens.InGame.Controls;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
-	import com.ms.tomf.Objects.Map;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import flash.media.Sound;
+	import flash.net.URLRequest;
 	
 	public class RangeSpear extends MovieClip
 	{	
 		private var spear:Object = new Object;
+		private var snd:Sound = new Sound(new URLRequest("spear.mp3"));
 		
-		public function RangeSpear(playerDirection:String,power:int)
+		public function RangeSpear(playerDirection:String,power:int,rotation:Number)
 		{
 			Controls.keyboard.space = false;
-			
+			snd.play();
 			spear.fly = false;
 			spear.dir = playerDirection;
-			this.visible = true;
+			spear.yVel = 0; 
+			spear.xVel = 0; 
+			spear.rotationInRadians = 0;
+			spear.rotation = rotation;
 			
-			if(spear.dir  == "right"){spear.speed = 15 + power/2;
-				this.x = InGame.inGameContent.player.x + 150;}
-			if(spear.dir  == "left"){spear.speed = -15 - power/2;
-				this.x = InGame.inGameContent.player.x - 50;}
+			this.rotation = spear.rotation
+			this.spear.rotationInRadians = spear.rotation * Math.PI / 180;
+			
+			
+			
+			trace(this.rotation);
+			
+			if(spear.dir  == "right"){spear.speed = 30 + power/2;
+				this.x = InGame.inGameContent.player.x + 40;}
+			if(spear.dir  == "left"){spear.speed = 30 + power/2;
+				this.x = InGame.inGameContent.player.x + 40;}
 			
 			this.y = InGame.inGameContent.player.y + 45;
 			
@@ -37,46 +50,29 @@
 			
 			this.addEventListener(Event.ENTER_FRAME, fly);
 		}
-		private function animation():void
-		{
-			if(spear.dir  == "right")
-			{gotoAndStop("spearRight");}
-			if(spear.dir  == "left")
-			{gotoAndStop("spearLeft");}
-			
+		
+	private function animation():void
+		{		
 			spear.know = InGame.inGameContent.player.x - InGame.inGameContent.map.x;
 		}
 		private function fly(e:Event):void
 		{
+			spear.xVel = Math.cos(spear.rotationInRadians) * spear.speed; //uses the cosine to get the xVel from the speed and rotation
+			spear.yVel = Math.sin(spear.rotationInRadians) * spear.speed; //uses the sine to get the yVel
 			
-			this.y -= Physics.movement.speedY;
-			this.x -= Physics.movement.speedX;
+			x += spear.xVel; //updates the position
+			y += spear.yVel;
 			
+			x -= Physics.movement.speedX
+			y -= Physics.movement.speedY
 			
-			if(spear.dir == "right")
-			{
-				this.x += spear.speed;
-				
-				if ( this.x > spear.startX + 600)
-				{
-					remove()
-				}
-			}
+			if(x+y>5000 || x+y<-5000)
+			{remove();}
 			
-			if(spear.dir == "left")
-			{
-				this.x += spear.speed;
-				
-				if ( this.x < spear.startX - 1200)
-				{
-					remove()
-				}
-			}
-			
-			if(Map.mapContent.ground.hitTestPoint(this.x + spear.leftPoint.x, this.y + spear.leftPoint.y, true))
+			/*if(Map.mapContent.ground.hitTestPoint(this.x + spear.leftPoint.x, this.y + spear.leftPoint.y, true))
 			{spear.speed = 0} 
 			if(Map.mapContent.ground.hitTestPoint(this.x + spear.rightPoint.x, this.y + spear.rightPoint.y, true))
-			{spear.speed = 0} 
+			{spear.speed = 0}*/
 		}
 		
 		private function points():void
@@ -88,7 +84,6 @@
 		private function remove():void
 		{
 			if (this.parent) this.parent.removeChild(this);
-			
 		}
 		
 	}

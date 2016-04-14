@@ -4,9 +4,12 @@ package com.ms.tomf.Objects.MenuItems
 	
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	import flash.media.Sound;
+	import flash.net.URLRequest;
 	
 	public class RestartInGamebtn extends MovieClip
 	{
+		private var snd:Sound = new Sound(new URLRequest("menuSound.mp3")); 
 		private var start:Start;
 		
 		public function RestartInGamebtn()
@@ -20,6 +23,7 @@ package com.ms.tomf.Objects.MenuItems
 		
 		private function mouseClicked(e:MouseEvent):void
 		{
+			snd.play();
 			this.start = new Start;
 			start.startUp();
 		}
