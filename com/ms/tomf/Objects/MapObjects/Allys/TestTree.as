@@ -19,7 +19,7 @@ package com.ms.tomf.Objects.MapObjects.Allys
 		}
 		private function setContent():void
 		{
-			this.bubble = new SpeakBubble("Hi mush!!!\n I hate you!");
+			this.bubble = new SpeakBubble("Hi mush!!!");
 		}
 		private function addContent():void
 		{

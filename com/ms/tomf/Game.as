@@ -1,18 +1,20 @@
 ﻿package com.ms.tomf
 {
+	import com.ms.tomf.Media.Music;
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Objects.MenuItems.PlayButton;
 	import com.ms.tomf.Screens.InGame.Controls;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.Menus.MainMenu;
 	import com.ms.tomf.System.SaveSpots.Start;
-	import com.ms.tomf.Media.Music;
 	
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.events.Event;
-	import flash.media.SoundChannel;
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.ui.Mouse;
+
 	public class Game extends MovieClip
 	{
 		private var mainMenu:MainMenu;
@@ -57,7 +59,7 @@
 			
 			
 			start.startUp();	
-			
+		
 			
 			mainMenu.visible = false;
 			inGame.visible = true;

@@ -35,6 +35,9 @@ package com.ms.tomf.Screens.InGame
 			keyboard.a = false;
 			keyboard.d = false;
 			keyboard.s = false;
+			keyboard.q = false;
+			keyboard.e = false;
+		
 		}
 	
 		private function checkKeys(e:Event):void
@@ -69,6 +72,8 @@ package com.ms.tomf.Screens.InGame
 			if(e.keyCode == 65){keyboard.a = true;}
 			if(e.keyCode == 68){keyboard.d = true;}
 			if(e.keyCode == 83){keyboard.s = true;}
+			if(e.keyCode == 81){keyboard.q = true;}
+			if(e.keyCode == 69){keyboard.e = true;}
 		}
 		
 		private function checkKeyUp(e:KeyboardEvent):void
@@ -79,6 +84,9 @@ package com.ms.tomf.Screens.InGame
 			if(e.keyCode == 65){keyboard.a = false;}
 			if(e.keyCode == 68){keyboard.d = false;}
 			if(e.keyCode == 83){keyboard.s = false;}
+			if(e.keyCode == 81){keyboard.q = false;}
+			if(e.keyCode == 69){keyboard.e = false;}
+		
 		}
 	}
 }

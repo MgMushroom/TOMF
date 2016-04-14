@@ -1,7 +1,7 @@
 package com.ms.tomf.Objects
 {
 	import com.ms.tomf.Objects.Player;
-	import com.ms.tomf.Objects.ABS.Projectiles.ABS;
+	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	import com.ms.tomf.Objects.MapObjects.Background;
 	import com.ms.tomf.Objects.MapObjects.Ground;
 	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;

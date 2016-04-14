@@ -1,5 +1,6 @@
-package com.ms.tomf.Objects.ABS.Projectiles
+﻿package com.ms.tomf.ABS.Projectiles
 {
+	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	import com.ms.tomf.Screens.InGame.Controls;
 	import com.ms.tomf.Screens.InGame.InGame;
 	
@@ -11,6 +12,7 @@ package com.ms.tomf.Objects.ABS.Projectiles
 	{
 		
 		public static var rotationABS:Number;
+		public static var cursorCol:Boolean;
 		
 		public function ABSrotate()
 		{
@@ -23,12 +25,15 @@ package com.ms.tomf.Objects.ABS.Projectiles
 	
 		private function check(e:Event):void
 		{
-			//calculate these values, which we will use to determine the angle we need to rotate to
+			
+			if(this.hitTestPoint(ABSprojectiles.shootCursor.x + ShootCursor.cursorPoint.x,
+				ABSprojectiles.shootCursor.y + ShootCursor.cursorPoint.y,true))
+			{cursorCol=true;}else{cursorCol=false;}
+			
 			var yDifference:Number =  Controls.mouse.y - y;
 			var xDifference:Number =  Controls.mouse.x - x;
-			//this constant will convert our angle from radians to degrees
 			var radiansToDegrees:Number = 180/Math.PI;
-			//this final line uses trigonometry to calculate the rotation
+			
 			rotation = Math.atan2(yDifference, xDifference) * radiansToDegrees;
 			rotationABS = this.rotation;
 		}

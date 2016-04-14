@@ -1,4 +1,4 @@
-﻿package com.ms.tomf.Objects.ABS.Projectiles
+﻿package com.ms.tomf.ABS.Projectiles
 {
 	import com.ms.tomf.Objects.Map;
 	import com.ms.tomf.Objects.Player;
@@ -16,7 +16,7 @@
 	public class RangeSpear extends MovieClip
 	{	
 		private var spear:Object = new Object;
-		private var snd:Sound = new Sound(new URLRequest("spear.mp3"));
+		private var snd:Sound = new Sound(new URLRequest("spearFly.mp3"));
 		
 		public function RangeSpear(playerDirection:String,power:int,rotation:Number)
 		{
@@ -32,15 +32,13 @@
 			this.rotation = spear.rotation
 			this.spear.rotationInRadians = spear.rotation * Math.PI / 180;
 			
-			
-			
-			trace(this.rotation);
-			
-			if(spear.dir  == "right"){spear.speed = 30 + power/2;
+			/*if(spear.dir  == "right"){spear.speed = 30 + power/2;
 				this.x = InGame.inGameContent.player.x + 40;}
 			if(spear.dir  == "left"){spear.speed = 30 + power/2;
-				this.x = InGame.inGameContent.player.x + 40;}
+				this.x = InGame.inGameContent.player.x + 40;}*/
 			
+			spear.speed = 20 + power/2;
+			this.x = InGame.inGameContent.player.x + 40;
 			this.y = InGame.inGameContent.player.y + 45;
 			
 			spear.startX = this.x 

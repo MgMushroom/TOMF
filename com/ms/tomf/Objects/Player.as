@@ -1,7 +1,7 @@
 package com.ms.tomf.Objects
 {
 	import com.ms.tomf.Objects.Map;
-	import com.ms.tomf.Objects.ABS.Projectiles.RangeSpear;
+	import com.ms.tomf.ABS.Projectiles.RangeSpear;
 	import com.ms.tomf.Screens.InGame.Controls;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
