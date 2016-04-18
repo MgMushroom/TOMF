@@ -34,26 +34,22 @@ package com.ms.tomf.Screens.InGame
 		public function addBars():void
 		{
 			
-			
-			/*textF.background = true;
-			textF.backgroundColor = 0xFF0000;
-			this.addChild(textF);*/
-			
+				
 			bars.health = new Sprite;
 			//bars.health.graphics.lineStyle(3,0x000000);
 			bars.health.graphics.beginFill(0xFF0000);
-			bars.health.graphics.drawRect(0,0,200,17);
+			bars.health.graphics.drawRect(0,0,200,18);
 			bars.health.graphics.endFill();
-			bars.health.x = 31;
+			bars.health.x = 30.5;
 			bars.health.y = 35.3;
 		
 			bars.stamina = new Sprite;
 			//bars.stamina.graphics.lineStyle(3,0x000000);
 			bars.stamina.graphics.beginFill(0xFFFF00);
-			bars.stamina.graphics.drawRect(0,0,1,17);
+			bars.stamina.graphics.drawRect(0,0,1,18);
 			bars.stamina.graphics.endFill();
-			bars.stamina.x = 31;
-			bars.stamina.y = 81.3;
+			bars.stamina.x = 30.5;
+			bars.stamina.y = 82.3;
 		
 			this.addChild(bars.health);
 			this.addChild(bars.stamina);
@@ -64,6 +60,12 @@ package com.ms.tomf.Screens.InGame
 		{
 			if(currentLabel == "spear")
 			{frame.spear = true;}else{frame.spear = false;}
+			
+			if(currentLabel == "melee")
+			{frame.melee = true;}else{frame.melee = false;}
+			
+			if(currentLabel == "magic")
+			{frame.magic = true;}else{frame.magic = false;}
 			
 			if(Controls.keyboard.e)
 			{stopper.e = false;}

@@ -43,6 +43,9 @@ package com.ms.tomf.Screens.InGame
 		private function checkDATA(e:Event):void
 		{
 			
+			
+			
+			
 			checkCol();
 			keyFunctions();
 			functionCol();

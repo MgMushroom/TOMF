@@ -1,10 +1,12 @@
 package com.ms.tomf.Screens.InGame
 {
-	import com.ms.tomf.Objects.Map;
-	import com.ms.tomf.Objects.Player;
-	import com.ms.tomf.Objects.MenuItems.PlayButton;
-	import com.ms.tomf.Screens.Menus.InGameMenu;
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
+	import com.ms.tomf.ABS.melee.ABSmelee;
+	import com.ms.tomf.Objects.Map;
+	import com.ms.tomf.Objects.MenuItems.PlayButton;
+	import com.ms.tomf.Objects.Player;
+	import com.ms.tomf.Screens.Menus.InGameMenu;
+	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -33,6 +35,7 @@ package com.ms.tomf.Screens.InGame
 			inGameContent.map = new Map;
 			inGameContent.player = new Player;
 			inGameContent.abs = new ABSprojectiles;
+			inGameContent.absMelee = new ABSmelee;
 			inGameContent.ui = new UserInt;
 			inGameContent.inGameMenu = new InGameMenu;
 		}
@@ -44,6 +47,7 @@ package com.ms.tomf.Screens.InGame
 			this.addChild(inGameContent.map);
 			this.addChild(inGameContent.player);
 			this.addChild(inGameContent.abs);
+			this.addChild(inGameContent.absMelee);
 			this.addChild(inGameContent.ui);
 			this.addChild(inGameContent.inGameMenu);
 		}

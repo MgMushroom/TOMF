@@ -42,11 +42,11 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			if(this.hitTestObject(InGame.inGameContent.player))
 			{Player.attributes.health -= 0;} 
 			
-			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x - 200)))
+			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x )))
 			{
 				this.x -= 8;
 			}
-			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 300)))
+			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 700)))
 			{	
 				this.x += 4;
 			}		
