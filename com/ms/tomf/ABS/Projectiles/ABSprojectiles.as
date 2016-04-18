@@ -48,7 +48,8 @@
 	
 		private function projectiles(e:Event):void
 		{
-			trace(UserInt.frame.spear)
+			
+			trace(UserInt.frame.spear);
 			if(UserInt.frame.spear)
 			{scope();
 			cursorControl();}
@@ -102,7 +103,7 @@
 		private function lauch(e:MouseEvent):void
 		{
 			
-			if(weapons.projectile.lauch == true)
+			if(weapons.projectile.lauch == true && UserInt.frame.spear == true)
 			{
 				weapons.spear = new RangeSpear(Player.state.dir, weapons.projectile.power, ABSrotate.rotationABS);
 				this.addChild(weapons.spear);

@@ -4,6 +4,7 @@ package com.ms.tomf.Screens.InGame
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Objects.MenuItems.PlayButton;
 	import com.ms.tomf.Screens.Menus.InGameMenu;
+	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
@@ -35,6 +36,8 @@ package com.ms.tomf.Screens.InGame
 			inGameContent.abs = new ABSprojectiles;
 			inGameContent.ui = new UserInt;
 			inGameContent.inGameMenu = new InGameMenu;
+			//inGameContent.Worm = new Worm;
+			
 		}
 		
 		private function addInGameContent():void
@@ -46,6 +49,7 @@ package com.ms.tomf.Screens.InGame
 			this.addChild(inGameContent.abs);
 			this.addChild(inGameContent.ui);
 			this.addChild(inGameContent.inGameMenu);
+			//this.addChild(inGameContent.Worm);
 		}
 	}
 }

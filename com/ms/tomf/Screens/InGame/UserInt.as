@@ -35,9 +35,9 @@ package com.ms.tomf.Screens.InGame
 		{
 			
 			
-			/*textF.background = true;
+			textF.background = true;
 			textF.backgroundColor = 0xFF0000;
-			this.addChild(textF);*/
+			this.addChild(textF);
 			
 			bars.health = new Sprite;
 			//bars.health.graphics.lineStyle(3,0x000000);
