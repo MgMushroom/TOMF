@@ -55,8 +55,8 @@
 		}
 		private function fly(e:Event):void
 		{
-			spear.xVel = Math.cos(spear.rotationInRadians) * spear.speed; //uses the cosine to get the xVel from the speed and rotation
-			spear.yVel = Math.sin(spear.rotationInRadians) * spear.speed; //uses the sine to get the yVel
+			spear.xVel = Math.cos(spear.rotationInRadians) * spear.speed;
+			spear.yVel = Math.sin(spear.rotationInRadians) * spear.speed;
 			
 			x += spear.xVel; //updates the position
 			y += spear.yVel;

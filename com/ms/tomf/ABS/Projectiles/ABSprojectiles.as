@@ -17,12 +17,11 @@
 	public class ABSprojectiles extends MovieClip
 	{
 		public static var weapons:Object = new Object;
-		private var helpers:Object = new Object;
+		public static var helpers:Object = new Object;
 		public static var shootCursor:ShootCursor = new ShootCursor;
 		
 		public function ABSprojectiles()
 		{
-			
 			
 			setWeaponsContent();
 			addWeaponsContent();
@@ -49,7 +48,11 @@
 		private function projectiles(e:Event):void
 		{
 			
+
 			trace(UserInt.frame.spear);
+
+			
+
 			if(UserInt.frame.spear)
 			{scope();
 			cursorControl();}

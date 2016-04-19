@@ -30,7 +30,7 @@ package com.ms.tomf.Objects.MapObjects.Allys
 		private function check(e:Event):void
 		{
 			if(this.hitTestPoint(InGame.inGameContent.player.x + Player.rightPoint.x, InGame.inGameContent.player.y + Player.rightPoint.y, true))
-			{bubble.visible = true;trace("moro");}else{bubble.visible = false;}
+			{bubble.visible = true;}else{bubble.visible = false;}
 		}
 	}
 }

@@ -3,11 +3,11 @@ package com.ms.tomf.ABS
 	import flash.display.MovieClip;
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	
-	public class ABS extends MovieClip
+	public class ABSmain extends MovieClip
 	{
 		private var absContent:Object;
 		
-		public function ABS()
+		public function ABSmain()
 		{
 			setContent();
 			addContent();

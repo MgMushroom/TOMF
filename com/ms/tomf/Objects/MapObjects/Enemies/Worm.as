@@ -60,6 +60,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			{Player.attributes.health -= 100;}
 			
 			
+
 			if(Map.mapContent.ground.hitTestPoint(Map.mapContent.worm.x + Worm.rightPointWorm.x, Map.mapContent.worm.y + Worm.rightPointWorm.y, true))
 			{
 				Worm.bumpPointsWorm.right = true;
@@ -70,9 +71,13 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 				Worm.bumpPointsWorm.right = false;
 			}
 			if(Worm.bumpPointsWorm.right == true)
+
+			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x )))
+
 			{
 				//this.y -= 10;
 			}
+
 			//trace(this.y + "\n" + this.x);
 			
 			if(this.hitTestObject(InGame.inGameContent.player))
@@ -92,6 +97,9 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			 
 			
 			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x ) && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 800))
+
+			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 700)))
+
 			{	
 				wormMove = false;
 				if((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 200 )))

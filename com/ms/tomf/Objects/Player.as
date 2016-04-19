@@ -63,7 +63,6 @@ package com.ms.tomf.Objects
 			
 			this.addEventListener(Event.ENTER_FRAME, checkPlayer)
 			this.addEventListener(Event.ENTER_FRAME, checkAnimation)
-		
 		}
 		
 		private function checkPlayer(e:Event):void
