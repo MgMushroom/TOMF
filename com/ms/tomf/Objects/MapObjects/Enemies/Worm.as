@@ -4,7 +4,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.UserInt;
-	
+	import com.ms.tomf.Screens.InGame.Physics;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -12,6 +12,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 
 	public class Worm extends MovieClip
 	{
+	public static var wormMove:Boolean = true;
 	public static var leftPointWorm:Point; 
 	public static var rightPointWorm:Point;
 	public static var upPointWorm:Point;
@@ -21,8 +22,8 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 	public var sprite:Sprite = new Sprite;
 		public function Worm()
 		{
-			this.y = 800;
-			this.x = 1500;
+			this.y = 300;
+			this.x = 2+500;
 			
 					
 			setPoints();
@@ -39,6 +40,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			bumpPointsWorm.left = false;
 			bumpPointsWorm.right = false;
 			this.addEventListener(Event.ENTER_FRAME, collision)
+			this.addEventListener(Event.ENTER_FRAME, speedWorm)
 			addChild(sprite)
 			sprite.x = rightPointWorm.x;
 			sprite.y = rightPointWorm.y;
@@ -47,8 +49,13 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			sprite.graphics.endFill();
 		}
 	
+		private function speedWorm(E:Event)
+		{
+			this.y += Physics.movement.speedY;
+		}
 		private function collision(E:Event)//Collision and checking if worm is close enough of player
 		{
+			trace(this.y)
 			if(this.hitTestObject(InGame.inGameContent.player))
 			{Player.attributes.health -= 100;}
 			
@@ -64,35 +71,35 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			}
 			if(Worm.bumpPointsWorm.right == true)
 			{
-				//this.y -= 10; 
+				//this.y -= 10;
 			}
 			//trace(this.y + "\n" + this.x);
 			
 			if(this.hitTestObject(InGame.inGameContent.player))
 			{Player.attributes.health -= 0;} 
-			
+		
 			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 700 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x - 300 )))
-			{
-				
+			{ 
+				wormMove = false;
 				if((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x -200)))
 				{
 					this.x += wormSpeed;
 				}
 				
 				this.x -= wormSpeed;
-				this.scaleX = -1;
+				//this.scaleX = -1;
 			}
 			 
 			
 			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x ) && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 800))
 			{	
-				
+				wormMove = false;
 				if((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 200 )))
 				{
 					this.x -= wormSpeed;
 				}
 				this.x += wormSpeed;
-				this.scaleX = 1;
+				//this.scaleX = 1;
 			}		
 		}
 	}

@@ -37,7 +37,7 @@ package com.ms.tomf.Screens.InGame
 			movement.speedY = 0;
 			movement.scrollX = 0;
 			movement.scrollY = 0;
-			movement.friction = 0.95;
+			movement.friction = 0.95; 
 		}
 	
 		private function checkDATA(e:Event):void
