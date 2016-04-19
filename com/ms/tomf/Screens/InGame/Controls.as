@@ -57,7 +57,6 @@ package com.ms.tomf.Screens.InGame
 		}
 		private function checkDirection(e:MouseEvent):void
 		{
-			
 			mouse.x = mouse.dirX;
 			mouse.y = mouse.dirY;
 			
