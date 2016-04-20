@@ -3,6 +3,7 @@ package com.ms.tomf.ABS.magic
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import com.ms.tomf.Objects.Player;
+	import com.ms.tomf.ABS.magic.Slow;
 	
 	public class Spells extends MovieClip
 	{
@@ -11,8 +12,12 @@ package com.ms.tomf.ABS.magic
 		
 		public function Spells(spell:int)
 		{
+			
 			activeSpell.spell = spell;
 			activeSpell.dir = Player.state.dir;
+			
+			if(activeSpell.spell == 1)
+			{activeSpell.slow = true;}
 			
 			if(activeSpell.spell == 2)
 			{activeSpell.barrier = true;}
@@ -24,14 +29,26 @@ package com.ms.tomf.ABS.magic
 	
 		private function checkActive(e:Event)
 		{
+		
+			
+			
+			if(activeSpell.slow == true)
+			{
+				
+				activeSpell.slow = false;
+				
+				spell.slow = new Slow(activeSpell.dir);
+				this.addChild(spell.slow);
+				
+			}
 			
 			if(activeSpell.barrier == true)
 			{
 			
 				activeSpell.barrier = false;
-			
-			spell.barrier = new Barrier(activeSpell.dir);
-			this.addChild(spell.barrier);
+					
+				spell.barrier = new Barrier(activeSpell.dir);
+				this.addChild(spell.barrier);
 			}
 		}
 	}
