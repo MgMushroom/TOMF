@@ -23,8 +23,8 @@ package com.ms.tomf.System.SaveSpots
 		
 			Physics.movement.scrollY = 0;
 			Physics.movement.scrollX = 0;
-			Map.mapContent.worm.x = 1500;
-			Map.mapContent.worm.y = 800;
+			Map.mapContent.worm.x = 2500;
+			Map.mapContent.worm.y = 300;
 		}
 	}
 }

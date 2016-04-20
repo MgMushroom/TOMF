@@ -37,7 +37,7 @@ package com.ms.tomf.Screens.InGame
 			movement.speedY = 0;
 			movement.scrollX = 0;
 			movement.scrollY = 0;
-			movement.friction = 0.95;
+			movement.friction = 0.95; 
 		}
 	
 		private function checkDATA(e:Event):void
@@ -89,7 +89,7 @@ package com.ms.tomf.Screens.InGame
 			{if(Physics.movement.speedY < 0){Physics.movement.speedY *= -0.5;}}	
 			
 			if(Player.bumpPoints.down)
-			{if(Physics.movement.speedY > 0){Physics.movement.speedY *= -0.5;}
+			{if(Physics.movement.speedY > 0){Physics.movement.speedY = 0;}
 			
 			if(Controls.keyboard.w && Player.attributes.stamina > 0)
 			{Physics.movement.speedY = Physics.gravity.jumpConst;}}

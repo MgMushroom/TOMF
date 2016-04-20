@@ -48,7 +48,11 @@
 		private function projectiles(e:Event):void
 		{
 			
+
+			trace(UserInt.frame.spear);
+
 			
+
 			if(UserInt.frame.spear)
 			{scope();
 			cursorControl();}
