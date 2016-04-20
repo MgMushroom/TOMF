@@ -36,7 +36,7 @@
 			
 			mainMenu.visible = true;
 			inGame.visible = false;
-			
+
 			MainMenuSwitch();
 			
 			this.addEventListener(Event.ENTER_FRAME, restart);	

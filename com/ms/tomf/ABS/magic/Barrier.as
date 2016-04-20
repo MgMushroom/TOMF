@@ -17,7 +17,7 @@ package com.ms.tomf.ABS.magic
 		{
 			
 			this.x = InGame.inGameContent.player.x - InGame.inGameContent.player.width *0.5;
-			this.y = InGame.inGameContent.player.y + InGame.inGameContent.player.height * 2.5;
+			this.y = InGame.inGameContent.player.y + InGame.inGameContent.player.height * 0.5;
 			
 			
 			barrierProperties.speed = 0;
