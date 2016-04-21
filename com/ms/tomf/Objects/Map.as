@@ -50,7 +50,7 @@ package com.ms.tomf.Objects
 			mapContent.testTree = new TestTree;
 			mapContent.traps = new Traps;
 			mapContent.movement = new Movement;
-			mapContent.worm = new Worm;
+			//mapContent.worm = new Worm;
 		}
 	
 		private function addMapContent():void
@@ -60,7 +60,7 @@ package com.ms.tomf.Objects
 			this.addChild(mapContent.movement);
 			this.addChild(mapContent.traps);
 			this.addChild(mapContent.testTree);
-			this.addChild(mapContent.worm);
+			//this.addChild(mapContent.worm);
 
 		}
 	}
