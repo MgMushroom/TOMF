@@ -36,7 +36,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			leftPointWorm = new Point(-100.30, 0);
 			rightPointWorm = new Point(100.30, 0)
 			upPointWorm = new Point(0, -67)
-			downPointWorm = new Point(0, 67)
+			downPointWorm = new Point(0, 50)
 		
 			for(var i:int = 0; i < 4; i++)
 			{
@@ -87,9 +87,26 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		private function collision(e:Event):void
 		{
 			if(Map.mapContent.ground.hitTestPoint(this.x + downPointWorm.x, this.y + downPointWorm.y, true))
-				{this.y -= 5;}
-				
+				{this.y -= 5;	wormProp.wormDown = true;}
+			else{wormProp.wormDown = false;}
+			if(Map.mapContent.ground.hitTestPoint(this.x + upPointWorm.x, this.y + upPointWorm.y, true))
+			{this.y += 20;	wormProp.wormUp = true;}
+			else{wormProp.wormUp = false;}
+			if(Map.mapContent.ground.hitTestPoint(this.x + rightPointWorm.x, this.y + rightPointWorm.y, true))
+			{this.y -= 50; wormProp.wormRight = true;}
+			else{wormProp.wormRight = false;}
+			if(Map.mapContent.ground.hitTestPoint(this.x + leftPointWorm.x, this.y + leftPointWorm.y, true))
+			{this.y -= 50;	wormProp.wormLeftown = true;}
+			else{wormProp.wormLeft = false;}
 			
+			
+			
+			if(Map.mapContent.ground.hitTestObject(this))
+			{wormProp.inBounds = true;}
+			else{wormProp.inBounds = false;}
+		
+			if(wormProp.inBounds == false)
+			{this.y -= 400;}
 		}
 	
 		private function playerDec(e:Event):void
@@ -99,7 +116,8 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			var wormDistance:int = (this.x - InGame.inGameContent.map.x);
 			var summaryDis:int = playerDistance - wormDistance;
 			
-			trace(summaryDis);
+			wormProp.wormY = wormDistance;
+			
 			
 			if(summaryDis < 700 && summaryDis > 100)
 			{
@@ -112,18 +130,6 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 				this.x -= wormProp.speed;
 				this.scaleX = -1;
 			}
-			
-			/*if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 700 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x - 300 )))
-			{ 
-				wormMove = false;
-				if((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x -200)))
-				{
-					this.x += wormSpeed;
-				}
-				
-				this.x -= wormSpeed;
-				//this.scaleX = -1;
-			}*/
 			
 		}
 	}

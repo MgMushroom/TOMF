@@ -16,13 +16,16 @@ package com.ms.tomf.ABS.magic
 			activeSpell.spell = spell;
 			activeSpell.dir = Player.state.dir;
 			
+			if(activeSpell.spell == 0)
+			{activeSpell.stun = true;}
+			
 			if(activeSpell.spell == 1)
 			{activeSpell.slow = true;}
 			
 			if(activeSpell.spell == 2)
 			{activeSpell.barrier = true;}
 			
-			trace(activeSpell.spell);
+			
 			this.addEventListener(Event.ENTER_FRAME, checkActive);
 			
 		}
@@ -30,6 +33,17 @@ package com.ms.tomf.ABS.magic
 		private function checkActive(e:Event)
 		{
 		
+			
+			
+			if(activeSpell.stun == true)
+			{
+				
+				activeSpell.stun = false;
+				
+				spell.stun = new Stun(activeSpell.dir);
+				this.addChild(spell.stun);
+				
+			}
 			
 			
 			if(activeSpell.slow == true)

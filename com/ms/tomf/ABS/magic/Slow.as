@@ -19,6 +19,7 @@ package com.ms.tomf.ABS.magic
 			
 			slow.dir = PlayerDir;
 			slow.speed = 0;
+			slow.distance = 0;
 			
 			this.addEventListener(Event.ENTER_FRAME, doSlow);
 		}
@@ -41,6 +42,19 @@ package com.ms.tomf.ABS.magic
 				this.x += slow.speed;
 			}
 		
+			slow.distance += slow.speed;
+			
+			if(slow.distance < -1500 || slow.distance > 1500)
+			{remove();}
+		
+		}
+	
+		private function remove():void
+		{
+			slow.distance = 0;
+			
+			if(this.parent)
+			{this.parent.removeChild(this);trace("fucking done");}
 		}
 	
 	}

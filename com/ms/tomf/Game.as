@@ -1,6 +1,6 @@
 ﻿package com.ms.tomf
 {
-	import com.ms.tomf.Media.Music;
+	
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Objects.MenuItems.PlayButton;
 	import com.ms.tomf.Screens.InGame.Controls;
@@ -20,7 +20,7 @@
 		private var mainMenu:MainMenu;
 		private var inGame:InGame;
 		private var start:Start;
-		private var music:Music = new Music;
+	
 		
 		public static var state:Object = new Object;
 	
@@ -32,7 +32,7 @@
 			
 			this.addChild(mainMenu);
 			this.addChild(inGame);
-			this.addChild(music);
+
 			
 			mainMenu.visible = true;
 			inGame.visible = false;
