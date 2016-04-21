@@ -11,3 +11,5 @@ package com.ms.tomf.ABS.magic
 		{		
 			trace("Fuck you FLASH");
 		}
+	}
+}

@@ -1,15 +1,17 @@
 package com.ms.tomf.Objects.MapObjects.Enemies
 {
+	import com.ms.tomf.Adjustments.groundAdjustment;
 	import com.ms.tomf.Objects.Map;
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Screens.InGame.InGame;
-	import com.ms.tomf.Screens.InGame.UserInt;
 	import com.ms.tomf.Screens.InGame.Physics;
+	import com.ms.tomf.Screens.InGame.UserInt;
+	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
-
+	
 	public class Worm extends MovieClip
 	{
 	public static var wormMove:Boolean = true;
@@ -22,10 +24,10 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 	public var sprite:Sprite = new Sprite;
 		public function Worm()
 		{
-			this.y = 300;
-			this.x = 2+500;
 			
-					
+			this.y = 300;
+			this.x = 2000;
+			
 			setPoints();
 			
 		}
@@ -47,21 +49,18 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			sprite.graphics.beginFill(0xFF0000);
 			sprite.graphics.drawRect(0,0,5,5);
 			sprite.graphics.endFill();
+			
 		}
 	
 		private function speedWorm(E:Event)
 		{
-			this.y += Physics.movement.speedY;
+			this.y += 3;
+			
 		}
 		private function collision(E:Event)//Collision and checking if worm is close enough of player
 		{
-			trace(this.y)
-			if(this.hitTestObject(InGame.inGameContent.player))
-			{Player.attributes.health -= 100;}
-			
-			
-
-			if(Map.mapContent.ground.hitTestPoint(Map.mapContent.worm.x + Worm.rightPointWorm.x, Map.mapContent.worm.y + Worm.rightPointWorm.y, true))
+			trace(this.y + "\n " + Worm.bumpPointsWorm.right);
+			if(InGame.inGameContent.groundAdj.hitTestPoint(Map.mapContent.worm.x + Worm.upPointWorm.x, Map.mapContent.worm.y + Worm.upPointWorm.y, true))
 			{
 				Worm.bumpPointsWorm.right = true;
 				
@@ -71,14 +70,17 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 				Worm.bumpPointsWorm.right = false;
 			}
 			if(Worm.bumpPointsWorm.right == true)
-
-			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x )))
-
 			{
-				//this.y -= 10;
+				this.y -= 5;
 			}
 
-			//trace(this.y + "\n" + this.x);
+			/*if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x )))
+			{
+				
+			}*/
+			
+
+			
 			
 			if(this.hitTestObject(InGame.inGameContent.player))
 			{Player.attributes.health -= 0;} 
