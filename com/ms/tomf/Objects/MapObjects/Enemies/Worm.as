@@ -105,6 +105,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			if(Map.mapContent.ground.hitTestPoint(this.x + leftPointWorm.x, this.y + leftPointWorm.y, true))
 			{this.y -= 50;	wormProp.wormLeftown = true;}
 			else{wormProp.wormLeft = false;}
+<<<<<<< HEAD
 			
 			if(this.hitTestObject(ABSprojectiles.weapons.spear))
 			{wormProp.health -= 2.5;}
@@ -112,6 +113,11 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			if(this.hitTestObject(EnemiesMain.enemies.worm))
 			{this.x += 5;}
 			
+=======
+			
+			
+			
+>>>>>>> origin/master
 			if(Map.mapContent.ground.hitTestObject(this))
 			{wormProp.inBounds = true;}
 			else{wormProp.inBounds = false;}
@@ -141,6 +147,11 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 				
 			wormProp.wormY = wormDistance;
 			
+<<<<<<< HEAD
+=======
+			wormProp.wormY = wormDistance;
+			
+>>>>>>> origin/master
 			
 			if(summaryDis < 700 && summaryDis > 100)
 			{
@@ -154,6 +165,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 				this.scaleX = -1;
 			}
 			
+<<<<<<< HEAD
 			trace(summaryDisY);
 			if(summaryDis < 100 && summaryDis > -100  && summaryDisY > -150 && summaryDisY < 0)
 			{
@@ -215,6 +227,8 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		{
 			wormProp.damage = 0;
 			if(this.parent) this.parent.removeChild(this);
+=======
+>>>>>>> origin/master
 		}
 	}
 }
