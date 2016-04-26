@@ -49,7 +49,7 @@
 		{
 			
 
-			trace(UserInt.frame.spear);
+			
 
 			
 

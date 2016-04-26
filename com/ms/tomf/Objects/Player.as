@@ -67,7 +67,7 @@ package com.ms.tomf.Objects
 		
 		private function checkPlayer(e:Event):void
 		{	
-			trace("player: " + bumpPoints.right)
+			
 			if(this.x < Controls.mouse.x)
 			{state.dir = "right";}
 			else if (this.x > Controls.mouse.x)
@@ -83,38 +83,58 @@ package com.ms.tomf.Objects
 		private function checkAnimation(e:Event):void
 		{	
 
-			if(Controls.keyboard.a == false && Controls.keyboard.d == false)
+			if(Controls.keyboard.a == false && Controls.keyboard.d == false && this.x < Controls.mouse.x)
 
 			{
-				gotoAndPlay("standingR");
+				frameControl.state = "stand";
+				//gotoAndPlay("stand");
+				this.scaleX = 0.75;
+				this.scaleY = 0.75;
 			}
 			if(Controls.keyboard.a == false && Controls.keyboard.d == false && this.x > Controls.mouse.x)
 			{
-				gotoAndPlay("standingL");
+				frameControl.state = "stand";
+				
+				this.scaleX = -0.75;
+				this.scaleY = 0.75;
 			}
 			
 			if(Player.bumpPoints.down == false && Physics.movement.speedY < 0 && this.x < Controls.mouse.x)
 			{
-				gotoAndPlay("jumpingR");
+				frameControl.state = "jump";
+				
+				this.scaleX = 0.75;
+				this.scaleY = 0.75;
 			}
 			
 			if(Player.bumpPoints.down == false  && Physics.movement.speedY < 0 && this.x > Controls.mouse.x)
 			{
-				gotoAndPlay("jumpingL");
+				frameControl.state = "jump";
+				
+				this.scaleX = -0.75;
+				this.scaleY = 0.75;
 			}
 		
-			if(Controls.keyboard.a == true && this.x < Controls.mouse.x && state.running||
-				Controls.keyboard.d == true && this.x < Controls.mouse.x && state.running)
+			if(Controls.keyboard.a == true && this.x < Controls.mouse.x && state.running && Player.bumpPoints.down == true||
+				Controls.keyboard.d == true && this.x < Controls.mouse.x && state.running && Player.bumpPoints.down == true)
 			{
-				gotoAndPlay("runningR");
+				frameControl.state = "running";
 				
+				this.scaleX = 0.75;
+				this.scaleY = 0.75;
 			}
 			
-			if(Controls.keyboard.a == true && this.x > Controls.mouse.x && state.running||
-				Controls.keyboard.d == true && this.x > Controls.mouse.x && state.running)
+			if(Controls.keyboard.a == true && this.x > Controls.mouse.x && state.running  && Player.bumpPoints.down == true||
+				Controls.keyboard.d == true && this.x > Controls.mouse.x && state.running  && Player.bumpPoints.down == true)
 			{
-				gotoAndPlay("runningL");
+				frameControl.state = "running";
+			
+				this.scaleX = -0.75;
+				this.scaleY = 0.75;
 			}
+		
+			if(this.currentLabel != frameControl.state)
+			{this.gotoAndStop(frameControl.state);}
 		
 		}
 	}

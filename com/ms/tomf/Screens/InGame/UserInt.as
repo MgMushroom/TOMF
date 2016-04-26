@@ -38,7 +38,7 @@ package com.ms.tomf.Screens.InGame
 			
 			textF.background = true;
 			textF.backgroundColor = 0xFF0000;
-			this.addChild(textF);
+			//this.addChild(textF);
 			
 
 				

@@ -1,9 +1,10 @@
 package com.ms.tomf.ABS.melee
 {
+	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Screens.InGame.Controls;
 	import com.ms.tomf.Screens.InGame.UserInt;
-	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
+	
 	import flash.display.MovieClip;
 	import flash.events.*;
 	import flash.ui.Mouse;
@@ -11,8 +12,9 @@ package com.ms.tomf.ABS.melee
 	public class ABSmelee extends MovieClip
 	{
 		
-		private var meleeParams:Object = new Object;
+		public static var meleeParams:Object = new Object;
 		private var knife:Knife;
+		public static var meleeWeapons:Object = new Object;
 		
 		public function ABSmelee()
 		{
@@ -55,6 +57,16 @@ package com.ms.tomf.ABS.melee
 				
 				meleeParams.attack = false;
 			}
+			
+			/*if(meleeParams.attack == true)
+			{
+				meleeParams.attack = false;
+				
+				meleeWeapons.dildo = new pinkDildo(Player.state.dir);
+				this.addChild(meleeWeapons.dildo);
+				
+			}*/
+		
 		}
 	}
 }

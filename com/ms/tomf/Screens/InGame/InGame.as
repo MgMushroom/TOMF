@@ -9,7 +9,8 @@ package com.ms.tomf.Screens.InGame
 	import com.ms.tomf.Objects.MapObjects.Enemies.EnemiesMain;
 	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
-
+	import com.ms.tomf.Objects.MapObjects.Bosses.Bosses;
+	
 	import com.ms.tomf.ABS.magic.ABSmagic;
 
 	import flash.display.MovieClip;
@@ -45,15 +46,16 @@ package com.ms.tomf.Screens.InGame
 			inGameContent.ui = new UserInt;
 			inGameContent.inGameMenu = new InGameMenu;
 			inGameContent.enemies = new EnemiesMain;
-			
+			inGameContent.bosses = new Bosses;
 		}
 		
-		private function addInGameContent():void
+		public function addInGameContent():void
 		{
 			this.addChild(inGameContent.physics);
 			this.addChild(inGameContent.controls);
 			this.addChild(inGameContent.map);
 			this.addChild(inGameContent.enemies);
+			this.addChild(inGameContent.bosses);
 			this.addChild(inGameContent.player);
 			this.addChild(inGameContent.absProj);
 			this.addChild(inGameContent.absMelee);

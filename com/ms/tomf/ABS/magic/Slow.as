@@ -54,7 +54,7 @@ package com.ms.tomf.ABS.magic
 			slow.distance = 0;
 			
 			if(this.parent)
-			{this.parent.removeChild(this);trace("fucking done");}
+			{this.parent.removeChild(this);}
 		}
 	
 	}
