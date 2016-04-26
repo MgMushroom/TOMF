@@ -16,7 +16,7 @@
 	
 	public class RangeSpear extends MovieClip
 	{	
-		private var spear:Object = new Object;
+		public static var spear:Object = new Object;
 		private var snd:Sound = new Sound(new URLRequest("spearFly.mp3"));
 		private var testSprite:Sprite;
 		
@@ -24,6 +24,9 @@
 		{
 			Controls.keyboard.space = false;
 			snd.play();
+			
+			spear.damage = 2.0 + power * 0.05;
+			
 			spear.fly = false;
 			spear.dir = playerDirection;
 			spear.yVel = 0; 
@@ -32,7 +35,7 @@
 			spear.rotation = rotation;
 			
 			this.rotation = spear.rotation
-			this.spear.rotationInRadians = spear.rotation * Math.PI / 180;
+			spear.rotationInRadians = spear.rotation * Math.PI / 180;
 			
 			/*if(spear.dir  == "right"){spear.speed = 30 + power/2;
 				this.x = InGame.inGameContent.player.x + 40;}
@@ -74,6 +77,12 @@
 			{remove();} 
 			if(InGame.inGameContent.enemies.hitTestPoint(this.x + spear.rightPoint.x, this.y + spear.rightPoint.y, true))
 			{remove();}
+<<<<<<< HEAD
+=======
+		
+			
+		
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 		}
 		
 		private function points():void

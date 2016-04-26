@@ -55,10 +55,14 @@ package com.ms.tomf.ABS.magic
 			
 			if(this.parent)
 <<<<<<< HEAD
+<<<<<<< HEAD
 			{this.parent.removeChild(this);}
 =======
 			{this.parent.removeChild(this);trace("fucking done");}
 >>>>>>> origin/master
+=======
+			{this.parent.removeChild(this);}
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 		}
 	
 	}

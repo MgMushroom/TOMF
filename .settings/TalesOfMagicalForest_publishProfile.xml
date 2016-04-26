@@ -20,7 +20,11 @@
     <pngDefaultName>1</pngDefaultName>
     <swcDefaultName>1</swcDefaultName>
     <oamDefaultName>1</oamDefaultName>
+<<<<<<< HEAD
     <flashFileName>C:\Users\SamuliL\Documents\TOMF\bin-debug\TalesOfMagicalForest.swf</flashFileName>
+=======
+    <flashFileName>P:\TOMF 3.1\bin-debug\TalesOfMagicalForest.swf</flashFileName>
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
     <projectorWinFileName>TalesOfMagicalForest.exe</projectorWinFileName>
     <projectorMacFileName>TalesOfMagicalForest.app</projectorMacFileName>
     <htmlFileName>C:\Users\SamuliL\Documents\TOMF\bin-debug\TalesOfMagicalForest.html</htmlFileName>

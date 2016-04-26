@@ -2,14 +2,25 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 {
 	import com.ms.tomf.Objects.Map;
 	import com.ms.tomf.Objects.Player;
+<<<<<<< HEAD
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
+=======
+	import com.ms.tomf.Objects.MapObjects.Enemies.EnemiesMain;
+	import com.ms.tomf.Screens.InGame.InGame;
+	import com.ms.tomf.Screens.InGame.Physics;
+	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
+	import com.ms.tomf.ABS.melee.ABSmelee;
+	import com.ms.tomf.ABS.Projectiles.RangeSpear;
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
+	import flash.media.Sound;
+	import flash.net.URLRequest;
 	
 	public class Worm extends MovieClip
 	{
@@ -20,6 +31,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		
 		private var wormProp:Object = new Object;
 		private var testSprite:Sprite = new Sprite;
+		private var punch:Sound = new Sound(new URLRequest("punch.mp3"));;
 		
 		public function Worm(params:Array)
 		{
@@ -27,11 +39,25 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			setUpProps();
 			doHealthBar();
 			
+<<<<<<< HEAD
 			gotoAndStop("worm");
 			
 			this.x = params[0];
 			this.y = params[1];
 			
+=======
+			wormProp.speed = params[3];
+			
+			gotoAndStop("worm");
+			
+			this.x = params[0];
+			this.y = params[1];
+			
+			if(params[2] == true)
+			{wormProp.jumpAlong = true;}
+			else{wormProp.jumpAlong = false;}
+		
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 			this.addEventListener(Event.ENTER_FRAME, movement);
 			this.addEventListener(Event.ENTER_FRAME, collision);
 			this.addEventListener(Event.ENTER_FRAME, playerDec);
@@ -68,8 +94,13 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		
 		private function setUpProps():void
 		{
+<<<<<<< HEAD
 			wormProp.speed = 10;
 			wormProp.damage = 50;
+=======
+			
+			wormProp.damage = 80;
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 		}
 		
 		private function testingSprite(xS:Number, yS:Number):void
@@ -86,15 +117,20 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		private function movement(e:Event):void
 		{
 			
-			this.y += 5;
+			this.y += 10;
 			this.x -= Physics.movement.speedX;
 			this.y -= Physics.movement.speedY;
+			
+			//if(wormProp.jumpAlong)
+			//{this.y -= Physics.movement.speedY;}
 		}
 	
 		private function collision(e:Event):void
 		{
+			var spearDamage:Number = RangeSpear.spear.damage;
+			
 			if(Map.mapContent.ground.hitTestPoint(this.x + downPointWorm.x, this.y + downPointWorm.y, true))
-				{this.y -= 5;	wormProp.wormDown = true;}
+				{this.y -= 10;	wormProp.wormDown = true;}
 			else{wormProp.wormDown = false;}
 			if(Map.mapContent.ground.hitTestPoint(this.x + upPointWorm.x, this.y + upPointWorm.y, true))
 			{this.y += 20;	wormProp.wormUp = true;}
@@ -104,6 +140,7 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			else{wormProp.wormRight = false;}
 			if(Map.mapContent.ground.hitTestPoint(this.x + leftPointWorm.x, this.y + leftPointWorm.y, true))
 			{this.y -= 50;	wormProp.wormLeftown = true;}
+<<<<<<< HEAD
 			else{wormProp.wormLeft = false;}
 <<<<<<< HEAD
 			
@@ -112,6 +149,12 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			
 			if(this.hitTestObject(EnemiesMain.enemies.worm))
 			{this.x += 5;}
+=======
+			else{wormProp.wormLeft = false;}	
+			
+			if(ABSprojectiles.weapons.spear.hitTestObject(this))
+			{wormProp.health -= spearDamage;}
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 			
 =======
 			
@@ -137,9 +180,15 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			
 			var summaryDis:int = playerDistance - wormDistance;
 			var summaryDisY:int = playerDistanceY - wormDistanceY;
+<<<<<<< HEAD
 			
 			
 			
+=======
+			
+			
+			
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 			if(summaryDis > 0)
 			{wormProp.hitDir = "left";}
 			else if(summaryDis < 0)
@@ -166,7 +215,11 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 			}
 			
 <<<<<<< HEAD
+<<<<<<< HEAD
 			trace(summaryDisY);
+=======
+			
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 			if(summaryDis < 100 && summaryDis > -100  && summaryDisY > -150 && summaryDisY < 0)
 			{
 				
@@ -186,7 +239,12 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		{
 			
 			Player.attributes.health -= wormProp.damage;
+<<<<<<< HEAD
 			
+=======
+			if(wormProp.hitSound == true)
+			{punch.play();}
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 			if(wormProp.hitDir == "right")
 			{gotoAndStop("wormHit");
 				
@@ -219,7 +277,11 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		{
 			wormProp.healthBar.y = -80;
 			wormProp.healthBar.width = wormProp.health / 2;
+<<<<<<< HEAD
 			if(wormProp.health == 0)
+=======
+			if(wormProp.health < 0)
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 			{remove();}
 		}
 	
@@ -227,8 +289,11 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 		{
 			wormProp.damage = 0;
 			if(this.parent) this.parent.removeChild(this);
+<<<<<<< HEAD
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> 5dd6319085dd829744133daedd74a0e080d54ef9
 		}
 	}
 }
