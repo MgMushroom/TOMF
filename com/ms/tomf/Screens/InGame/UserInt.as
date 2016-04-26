@@ -2,9 +2,12 @@ package com.ms.tomf.Screens.InGame
 {
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	import com.ms.tomf.Objects.Map;
-	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;
+	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Screens.InGame.Controls;
+	import com.ms.tomf.Screens.InGame.UIweapons.*;
+	import com.ms.tomf.Screens.InGame.InGame;
+	import com.ms.tomf.Screens.InGame.UIweapons.weaponMenuMagic;
 	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
@@ -18,17 +21,36 @@ package com.ms.tomf.Screens.InGame
 		private var bars:Object = new Object;
 		private var textF:TextField = new TextField;
 		private var stopper:Object = new Object;
+		private var difUI:Object = new Object;
 		private var snd:Sound = new Sound(new URLRequest("sound.mp3")); 
 		public static var frame:Object = new Object;
 		
 		public function UserInt()
 		{
 			gotoAndStop("spear");
-			stopper.e = true;
-			stopper.q = true;
+			stopper.one = true;
+			stopper.two = true;
+			stopper.three = true;
 			
 			addBars();
+			uiContent();
 			this.addEventListener(Event.ENTER_FRAME, showPlayerParams);
+		}
+		
+		private function uiContent():void
+		{
+			difUI.spearMenu = new weaponMenuSpear;
+			difUI.swordMenu = new weaponMenuMelee;
+			difUI.magicMenu = new weaponMenuMagic; 
+			
+			this.addChild(difUI.spearMenu);
+			this.addChild(difUI.swordMenu);
+			this.addChild(difUI.magicMenu);
+			
+			difUI.spearMenu.visible = false;
+			difUI.swordMenu.visible = false;
+			difUI.magicMenu.visible = false;
+		
 		}
 		
 		public function addBars():void
@@ -38,7 +60,7 @@ package com.ms.tomf.Screens.InGame
 			
 			textF.background = true;
 			textF.backgroundColor = 0xFF0000;
-			this.addChild(textF);
+			//this.addChild(textF);
 			
 
 				
@@ -66,6 +88,7 @@ package com.ms.tomf.Screens.InGame
 	
 		public function showPlayerParams(e:Event):void
 		{
+			
 			if(currentLabel == "spear")
 			{frame.spear = true;}else{frame.spear = false;}
 			
@@ -75,11 +98,31 @@ package com.ms.tomf.Screens.InGame
 			if(currentLabel == "magic")
 			{frame.magic = true;}else{frame.magic = false;}
 			
-			if(Controls.keyboard.e)
-			{stopper.e = false;}
+			if(Controls.keyboard.one)
+			{stopper.one = false;}
+			if(Controls.keyboard.two)
+			{stopper.two = false;}
+			if(Controls.keyboard.three)
+			{stopper.three = false;}
 			
-			if(Controls.keyboard.e == false  && stopper.e == false)
-			{nextFrame(); snd.play(); stopper.e = true;}
+			/*if(Controls.keyboard.one == false  && stopper.one == false)
+			{gotoAndStop("spear"); snd.play(); stopper.one = true; this.addChild(difUI.spearMenu); this.removeChild(difUI.swordMenu); this.removeChild(difUI.magicMenu);}
+			
+			if(Controls.keyboard.two == false  && stopper.two == false)
+			{gotoAndStop("melee"); snd.play(); stopper.two = true; this.addChild(difUI.swordMenu); this.removeChild(difUI.spearMenu); this.removeChild(difUI.magicMenu);}
+			
+			if(Controls.keyboard.three == false  && stopper.three == false)
+			{gotoAndStop("magic"); snd.play(); stopper.three = true; this.addChild(difUI.magicMenu); this.removeChild(difUI.swordMenu); this.removeChild(difUI.spearMenu);}*/
+		
+			if(Controls.keyboard.one == false  && stopper.one == false)
+			{gotoAndStop("spear"); snd.play(); stopper.one = true; difUI.spearMenu.visible = true; difUI.swordMenu.visible = false; difUI.magicMenu.visible = false;}
+			
+			if(Controls.keyboard.two == false  && stopper.two == false)
+			{gotoAndStop("melee"); snd.play(); stopper.two = true; difUI.swordMenu.visible = true; difUI.spearMenu.visible = false; difUI.magicMenu.visible = false;}
+			
+			if(Controls.keyboard.three == false  && stopper.three == false)
+			{gotoAndStop("magic"); snd.play(); stopper.three = true; difUI.magicMenu.visible = true; difUI.spearMenu.visible = false; difUI.swordMenu.visible = false;}
+			
 			
 			if(Controls.keyboard.q)
 			{stopper.q = false;}

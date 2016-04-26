@@ -4,11 +4,11 @@ package com.ms.tomf.Objects.MapObjects.Bosses.Bosses
 	
 	public class Hippie extends MovieClip
 	{
-		
+		public static var hippie:Hippie = new Hippie;
 		public function Hippie()
 		{
-			
-			this.x = 1000;
+			this.addChild(hippie);
+			this.x = 2000;
 			this.y = 800;
 		}
 	}

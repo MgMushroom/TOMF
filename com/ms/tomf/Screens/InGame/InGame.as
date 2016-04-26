@@ -3,11 +3,12 @@ package com.ms.tomf.Screens.InGame
 	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	import com.ms.tomf.ABS.magic.ABSmagic;
 	import com.ms.tomf.ABS.melee.ABSmelee;
-	import com.ms.tomf.Adjustments.groundAdjustment;
 	import com.ms.tomf.Objects.Map;
+	import com.ms.tomf.Objects.MapObjects.Enemies.EnemiesMain;
 	import com.ms.tomf.Objects.MapObjects.Enemies.Worm;
 	import com.ms.tomf.Objects.MenuItems.PlayButton;
 	import com.ms.tomf.Objects.Player;
+	import com.ms.tomf.Screens.InGame.UIweapons.*;
 	import com.ms.tomf.Screens.Menus.InGameMenu;
 	
 	import flash.display.MovieClip;
@@ -42,24 +43,27 @@ package com.ms.tomf.Screens.InGame
 			inGameContent.absMagic = new ABSmagic;
 			inGameContent.ui = new UserInt;
 			inGameContent.inGameMenu = new InGameMenu;
-			inGameContent.groundAdj = new groundAdjustment;
-			//inGameContent.Worm = new Worm;
+			inGameContent.enemies = new EnemiesMain;
+			//inGameContent.menuSpear = new weaponMenuSpear;
+			//inGameContent.menuMelee = new weaponMenuMelee;
 			
 		}
 		
-		private function addInGameContent():void
+		public function addInGameContent():void
 		{
 			this.addChild(inGameContent.physics);
 			this.addChild(inGameContent.controls);
 			this.addChild(inGameContent.map);
-			this.addChild(inGameContent.groundAdj);
+			this.addChild(inGameContent.enemies);
 			this.addChild(inGameContent.player);
 			this.addChild(inGameContent.absProj);
 			this.addChild(inGameContent.absMelee);
 			this.addChild(inGameContent.absMagic);
 			this.addChild(inGameContent.ui);
 			this.addChild(inGameContent.inGameMenu);
-			//this.addChild(inGameContent.Worm);
+			//this.addChild(inGameContent.menuSpear);
+			//this.addChild(inGameContent.menuMelee);
+			
 		}
 	}
 }

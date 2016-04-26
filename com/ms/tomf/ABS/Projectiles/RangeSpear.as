@@ -1,13 +1,14 @@
 ﻿package com.ms.tomf.ABS.Projectiles
 {
 	import com.ms.tomf.Objects.Map;
-	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Objects.MapObjects.Ground;
+	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Screens.InGame.Controls;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
 	
 	import flash.display.MovieClip;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.Point;
 	import flash.media.Sound;
@@ -17,6 +18,7 @@
 	{	
 		private var spear:Object = new Object;
 		private var snd:Sound = new Sound(new URLRequest("spearFly.mp3"));
+		private var testSprite:Sprite;
 		
 		public function RangeSpear(playerDirection:String,power:int,rotation:Number)
 		{
@@ -46,6 +48,7 @@
 			points(); 
 			animation();
 			
+			
 			this.addEventListener(Event.ENTER_FRAME, fly);
 		}
 		
@@ -67,16 +70,35 @@
 			if(x+y>5000 || x+y<-5000)
 			{remove();}
 			
-			/*if(Map.mapContent.ground.hitTestPoint(this.x + spear.leftPoint.x, this.y + spear.leftPoint.y, true))
-			{spear.speed = 0} 
-			if(Map.mapContent.ground.hitTestPoint(this.x + spear.rightPoint.x, this.y + spear.rightPoint.y, true))
-			{spear.speed = 0}*/
+			if(InGame.inGameContent.enemies.hitTestPoint(this.x + spear.leftPoint.x, this.y + spear.leftPoint.y, true))
+			{remove();} 
+			if(InGame.inGameContent.enemies.hitTestPoint(this.x + spear.rightPoint.x, this.y + spear.rightPoint.y, true))
+			{remove();}
 		}
 		
 		private function points():void
 		{
-			spear.leftPoint = new Point(-157.50, -6);
+			spear.leftPoint = new Point(-50.50, -6);  
 			spear.rightPoint = new Point(-130, -6);
+		
+			for(var i:int=0;i<3;i++)
+			{
+				/*if(i==1)
+				{doSprites(spear.leftPoint.x, spear.leftPoint.y);}
+				if(i==2)
+				{doSprites(spear.rightPoint.x, spear.rightPoint.y);}*/
+			}
+		}
+		
+		private function doSprites(xS,yS):void
+		{
+			this.testSprite = new Sprite;
+			testSprite.x = xS;
+			testSprite.y = yS;
+			testSprite.graphics.beginFill(0xFF0000);
+			testSprite.graphics.drawRect(0,0,10,10);
+			testSprite.graphics.endFill();
+			this.addChild(testSprite);
 		}
 		
 		private function remove():void

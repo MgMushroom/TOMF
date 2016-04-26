@@ -1,11 +1,10 @@
 package com.ms.tomf.Objects.MapObjects.Enemies
 {
-	import com.ms.tomf.Adjustments.groundAdjustment;
 	import com.ms.tomf.Objects.Map;
 	import com.ms.tomf.Objects.Player;
 	import com.ms.tomf.Screens.InGame.InGame;
 	import com.ms.tomf.Screens.InGame.Physics;
-	import com.ms.tomf.Screens.InGame.UserInt;
+	import com.ms.tomf.ABS.Projectiles.ABSprojectiles;
 	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
@@ -14,103 +13,208 @@ package com.ms.tomf.Objects.MapObjects.Enemies
 	
 	public class Worm extends MovieClip
 	{
-	public static var wormMove:Boolean = true;
-	public static var leftPointWorm:Point; 
-	public static var rightPointWorm:Point;
-	public static var upPointWorm:Point;
-	public static var downPointWorm:Point;
-	public static var bumpPointsWorm:Object = new Object;
-	public static var wormSpeed = 8;
-	public var sprite:Sprite = new Sprite;
-		public function Worm()
+		private var leftPointWorm:Point; 
+		private var rightPointWorm:Point;
+		private var upPointWorm:Point;
+		private var downPointWorm:Point;
+		
+		private var wormProp:Object = new Object;
+		private var testSprite:Sprite = new Sprite;
+		
+		public function Worm(params:Array)
 		{
+			setUpPoints();
+			setUpProps();
+			doHealthBar();
 			
-			this.y = 300;
-			this.x = 2000;
+			gotoAndStop("worm");
 			
-			setPoints();
+			this.x = params[0];
+			this.y = params[1];
 			
+			this.addEventListener(Event.ENTER_FRAME, movement);
+			this.addEventListener(Event.ENTER_FRAME, collision);
+			this.addEventListener(Event.ENTER_FRAME, playerDec);
 		}
-		private function setPoints():void
+	
+		private function setUpPoints():void
 		{
-			leftPointWorm = new Point(-100.30, 67);
-			rightPointWorm = new Point(100.60, 67)
-			upPointWorm = new Point(0, 0)
-			downPointWorm = new Point(0, 134)
-			bumpPointsWorm.up = false;
-			bumpPointsWorm.down = false;
-			bumpPointsWorm.left = false;
-			bumpPointsWorm.right = false;
-			this.addEventListener(Event.ENTER_FRAME, collision)
-			this.addEventListener(Event.ENTER_FRAME, speedWorm)
-			addChild(sprite)
-			sprite.x = rightPointWorm.x;
-			sprite.y = rightPointWorm.y;
-			sprite.graphics.beginFill(0xFF0000);
-			sprite.graphics.drawRect(0,0,5,5);
-			sprite.graphics.endFill();
+			leftPointWorm = new Point(-100.30, 0);
+			rightPointWorm = new Point(100.30, 0)
+			upPointWorm = new Point(0, -67)
+			downPointWorm = new Point(0, 50)
+		
+			/*for(var i:int = 0; i < 4; i++)
+			{
+				if(i == 0)
+				{
+					testingSprite(leftPointWorm.x,leftPointWorm.y);
+				}
+				if(i == 1)
+				{
+					testingSprite(rightPointWorm.x,rightPointWorm.y);
+				}
+				if(i == 2)
+				{
+					testingSprite(upPointWorm.x,upPointWorm.y);
+				}
+				if(i == 3)
+				{
+					testingSprite(downPointWorm.x,downPointWorm.y);
+				}
+			}*/
+		
+		}
+		
+		private function setUpProps():void
+		{
+			wormProp.speed = 10;
+			wormProp.damage = 50;
+		}
+		
+		private function testingSprite(xS:Number, yS:Number):void
+		{
+			this.testSprite = new Sprite;
+			testSprite.x = xS;
+			testSprite.y = yS;
+			testSprite.graphics.beginFill(0xFF0000);
+			testSprite.graphics.drawRect(0,0,5,5);
+			testSprite.graphics.endFill();
+			this.addChild(testSprite);
+		}
+			
+		private function movement(e:Event):void
+		{
+			
+			this.y += 5;
+			this.x -= Physics.movement.speedX;
+			this.y -= Physics.movement.speedY;
+		}
+	
+		private function collision(e:Event):void
+		{
+			if(Map.mapContent.ground.hitTestPoint(this.x + downPointWorm.x, this.y + downPointWorm.y, true))
+				{this.y -= 5;	wormProp.wormDown = true;}
+			else{wormProp.wormDown = false;}
+			if(Map.mapContent.ground.hitTestPoint(this.x + upPointWorm.x, this.y + upPointWorm.y, true))
+			{this.y += 20;	wormProp.wormUp = true;}
+			else{wormProp.wormUp = false;}
+			if(Map.mapContent.ground.hitTestPoint(this.x + rightPointWorm.x, this.y + rightPointWorm.y, true))
+			{this.y -= 50; wormProp.wormRight = true;}
+			else{wormProp.wormRight = false;}
+			if(Map.mapContent.ground.hitTestPoint(this.x + leftPointWorm.x, this.y + leftPointWorm.y, true))
+			{this.y -= 50;	wormProp.wormLeftown = true;}
+			else{wormProp.wormLeft = false;}
+			
+			if(this.hitTestObject(ABSprojectiles.weapons.spear))
+			{wormProp.health -= 2.5;}
+			
+			if(this.hitTestObject(EnemiesMain.enemies.worm))
+			{this.x += 5;}
+			
+			if(Map.mapContent.ground.hitTestObject(this))
+			{wormProp.inBounds = true;}
+			else{wormProp.inBounds = false;}
+		
+			if(wormProp.inBounds == false)
+			{this.y -= 400;}
+		}
+	
+		private function playerDec(e:Event):void
+		{
+			
+			var playerDistance:int =(InGame.inGameContent.player.x - InGame.inGameContent.map.x);
+			var wormDistance:int = (this.x - InGame.inGameContent.map.x);
+			
+			var playerDistanceY:int =(InGame.inGameContent.player.y - InGame.inGameContent.map.y);
+			var wormDistanceY:int = (this.y - InGame.inGameContent.map.y);
+			
+			var summaryDis:int = playerDistance - wormDistance;
+			var summaryDisY:int = playerDistanceY - wormDistanceY;
+			
+			
+			
+			if(summaryDis > 0)
+			{wormProp.hitDir = "left";}
+			else if(summaryDis < 0)
+			{wormProp.hitDir = "right";}
+				
+			wormProp.wormY = wormDistance;
+			
+			
+			if(summaryDis < 700 && summaryDis > 100)
+			{
+				this.x += wormProp.speed;
+				this.scaleX = 1;
+			}
+			
+			if(summaryDis > -700 && summaryDis < -100)
+			{
+				this.x -= wormProp.speed;
+				this.scaleX = -1;
+			}
+			
+			trace(summaryDisY);
+			if(summaryDis < 100 && summaryDis > -100  && summaryDisY > -150 && summaryDisY < 0)
+			{
+				
+				var hitChance:int = Math.random()* 10;
+				
+				if(hitChance == 5)
+				{hit();}
+				hitChance = 0;
+				
+			}
+			else
+			{gotoAndStop("worm");}
+		
+		}
+	
+		private function hit():void
+		{
+			
+			Player.attributes.health -= wormProp.damage;
+			
+			if(wormProp.hitDir == "right")
+			{gotoAndStop("wormHit");
+				
+			}
+			
+			if(wormProp.hitDir == "left")
+			{gotoAndStop("wormHit");
+				//this.scaleX = 1;
+			}
+			
 			
 		}
 	
-		private function speedWorm(E:Event)
+		private function doHealthBar():void
 		{
-			this.y += 3;
+			wormProp.health = 100;
+			wormProp.healthBar = new Sprite;
 			
-		}
-		private function collision(E:Event)//Collision and checking if worm is close enough of player
-		{
-			trace(this.y + "\n " + Worm.bumpPointsWorm.right);
-			if(InGame.inGameContent.groundAdj.hitTestPoint(Map.mapContent.worm.x + Worm.upPointWorm.x, Map.mapContent.worm.y + Worm.upPointWorm.y, true))
-			{
-				Worm.bumpPointsWorm.right = true;
-				
-			} 
-				else 
-			{
-				Worm.bumpPointsWorm.right = false;
-			}
-			if(Worm.bumpPointsWorm.right == true)
-			{
-				this.y -= 5;
-			}
-
-			/*if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x )))
-			{
-				
-			}*/
-			
-
+			wormProp.healthBar.graphics.beginFill(0xFF0000);
+			wormProp.healthBar.graphics.drawRect(0,0,50,10);
+			wormProp.healthBar.graphics.endFill();
 			
 			
-			if(this.hitTestObject(InGame.inGameContent.player))
-			{Player.attributes.health -= 0;} 
+			this.addChild(wormProp.healthBar);
+			this.addEventListener(Event.ENTER_FRAME, checkBar);
 		
-			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 700 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x - 300 )))
-			{ 
-				wormMove = false;
-				if((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x -200)))
-				{
-					this.x += wormSpeed;
-				}
-				
-				this.x -= wormSpeed;
-				//this.scaleX = -1;
-			}
-			 
-			
-			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x ) && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 800))
-
-			if ((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x - 600 && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 700)))
-
-			{	
-				wormMove = false;
-				if((InGame.inGameContent.player.x - InGame.inGameContent.map.x >= this.x && (InGame.inGameContent.player.x - InGame.inGameContent.map.x <= this.x + 200 )))
-				{
-					this.x -= wormSpeed;
-				}
-				this.x += wormSpeed;
-				//this.scaleX = 1;
-			}		
+		}
+	
+		private function checkBar(e:Event):void
+		{
+			wormProp.healthBar.y = -80;
+			wormProp.healthBar.width = wormProp.health / 2;
+			if(wormProp.health == 0)
+			{remove();}
+		}
+	
+		private function remove():void
+		{
+			wormProp.damage = 0;
+			if(this.parent) this.parent.removeChild(this);
 		}
 	}
 }

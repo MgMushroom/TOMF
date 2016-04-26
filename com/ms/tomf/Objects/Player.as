@@ -67,7 +67,7 @@ package com.ms.tomf.Objects
 		
 		private function checkPlayer(e:Event):void
 		{	
-			//trace("player: " + bumpPoints.right)
+			
 			if(this.x < Controls.mouse.x)
 			{state.dir = "right";}
 			else if (this.x > Controls.mouse.x)

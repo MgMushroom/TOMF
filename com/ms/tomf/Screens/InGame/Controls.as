@@ -73,6 +73,11 @@ package com.ms.tomf.Screens.InGame
 			if(e.keyCode == 83){keyboard.s = true;}
 			if(e.keyCode == 81){keyboard.q = true;}
 			if(e.keyCode == 69){keyboard.e = true;}
+			if(e.keyCode == 67){keyboard.c = true;}
+			if(e.keyCode == 86){keyboard.v = true;}
+			if(e.keyCode == 49){keyboard.one = true;}
+			if(e.keyCode == 50){keyboard.two = true;}
+			if(e.keyCode == 51){keyboard.three = true;}
 		}
 		
 		private function checkKeyUp(e:KeyboardEvent):void
@@ -85,7 +90,11 @@ package com.ms.tomf.Screens.InGame
 			if(e.keyCode == 83){keyboard.s = false;}
 			if(e.keyCode == 81){keyboard.q = false;}
 			if(e.keyCode == 69){keyboard.e = false;}
-		
+			if(e.keyCode == 67){keyboard.c = false;}
+			if(e.keyCode == 86){keyboard.v = false;}
+			if(e.keyCode == 49){keyboard.one = false;}
+			if(e.keyCode == 50){keyboard.two = false;}
+			if(e.keyCode == 51){keyboard.three = false;}
 		}
 	}
 }
